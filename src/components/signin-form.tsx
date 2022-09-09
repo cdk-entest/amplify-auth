@@ -106,6 +106,16 @@ const LoginForm = ({ setUser }: { setUser: any }) => {
         >
           Sign In
         </Button>
+        <Button
+          width="100%"
+          colorScheme="orange"
+          onClick={async () => {
+            setUser('SIGNUP')
+          }}
+          disabled
+        >
+          Create An Account
+        </Button>
       </VStack>
     </Box>
   );
