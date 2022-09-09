@@ -1,8 +1,22 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import { Amplify, Auth } from "aws-amplify";
+import { ChakraProvider } from "@chakra-ui/react";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import awsconfig from "./../src/aws-exports";
+
+try {
+  Amplify.configure(awsconfig);
+  Amplify.register(Auth);
+} catch (error) {
+  console.log(error);
 }
 
-export default MyApp
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <ChakraProvider>
+      <Component {...pageProps} />
+    </ChakraProvider>
+  );
+}
+
+export default MyApp;
