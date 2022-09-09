@@ -1,11 +1,11 @@
 import { Box, VStack, Button } from "@chakra-ui/react";
 import { Auth } from "aws-amplify";
 
-const signOut = async () => {
-  const resp = await Auth.signOut();
-};
-
-const SignOutForm = () => {
+const SignOutForm = ({ setUser }: { setUser: any }) => {
+  const signOut = async () => {
+    const resp = await Auth.signOut();
+    setUser(null);
+  };
   return (
     <Box
       width="5xl"
