@@ -1,4 +1,3 @@
-## Introduction 
 ---
 title: Amplify Authentication  
 description: implement an authentication flow with amplify  
@@ -8,6 +7,7 @@ date: 2022-09-08
 ---
 
 
+## Introduction 
 [GitHub] this shows a simple auth flow with Amplfiy and NextJS.
 - Sign up 
 - Confirm sign up code 
