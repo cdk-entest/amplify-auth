@@ -45,7 +45,7 @@ const SignUpForm = ({ setUser }: { setUser: any }) => {
 
 
   const confirmSignUp = async (username: string, code: string) => {
-    if (code) {
+    if (!code) {
       setUser(null)
     } else {
       try {

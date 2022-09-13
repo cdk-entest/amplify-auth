@@ -112,7 +112,6 @@ const LoginForm = ({ setUser }: { setUser: any }) => {
           onClick={async () => {
             setUser('SIGNUP')
           }}
-          disabled
         >
           Create An Account
         </Button>
