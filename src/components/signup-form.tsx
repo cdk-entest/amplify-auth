@@ -11,21 +11,18 @@ import { EmailIcon, ViewIcon } from "@chakra-ui/icons";
 import { Auth } from "aws-amplify";
 import React, { useState } from "react";
 
-
 const SignUpForm = ({ setUser }: { setUser: any }) => {
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
   const [code, setCode] = useState("");
   const [submit, setSubmit] = useState(false);
 
-
   const signUp = async (username: string, password: string) => {
     console.log("sign up...", username, password);
 
     if (!username) {
-      setUser(null)
-    }
-    else {
+      setUser(null);
+    } else {
       try {
         const { user } = await Auth.signUp({
           username,
@@ -35,39 +32,39 @@ const SignUpForm = ({ setUser }: { setUser: any }) => {
           },
         });
         console.log(user);
-        setSubmit(true)
+        setSubmit(true);
       } catch (error) {
         console.log(error);
-        setUser(null)
+        setUser(null);
       }
     }
   };
 
-
   const confirmSignUp = async (username: string, code: string) => {
     if (!code) {
-      setUser(null)
+      setUser(null);
     } else {
       try {
-        const confirm = await Auth.confirmSignUp(username, code)
-        console.log('confirm sign up ...', confirm)
-        const user = await Auth.currentAuthenticatedUser()
-        console.log(user)
-        setUser(user)
+        const confirm = await Auth.confirmSignUp(username, code);
+        console.log("confirm sign up ...", confirm);
+        const user = await Auth.currentAuthenticatedUser();
+        console.log(user);
+        setUser(user);
       } catch (error) {
-        console.log("error configrm sign up")
-        setUser(null)
+        console.log("error configrm sign up");
+        setUser(null);
       }
     }
-  }
+  };
 
-  const SignUpButton =
+  const SignUpButton = (
     <Box
       width="5xl"
       height="70vh"
       display="flex"
       alignItems="center"
       justifyContent="center"
+      margin={"auto"}
     >
       <VStack
         py={12}
@@ -98,16 +95,20 @@ const SignUpForm = ({ setUser }: { setUser: any }) => {
             }}
           ></Input>
         </InputGroup>
-        <Button width="100%" colorScheme="teal" onClick={async () => {
-          signUp(name, pass)
-        }}>
+        <Button
+          width="100%"
+          colorScheme="teal"
+          onClick={async () => {
+            signUp(name, pass);
+          }}
+        >
           Sign Up
         </Button>
       </VStack>
     </Box>
+  );
 
-
-  const ConfirmButton =
+  const ConfirmButton = (
     <Box
       width="5xl"
       height="70vh"
@@ -133,17 +134,20 @@ const SignUpForm = ({ setUser }: { setUser: any }) => {
             }}
           ></Input>
         </InputGroup>
-        <Button width="100%" colorScheme="teal" onClick={async () => {
-          confirmSignUp(name, code)
-        }}>
+        <Button
+          width="100%"
+          colorScheme="teal"
+          onClick={async () => {
+            confirmSignUp(name, code);
+          }}
+        >
           Confirm
         </Button>
       </VStack>
     </Box>
-
-  return (
-    submit ? ConfirmButton : SignUpButton
   );
+
+  return submit ? ConfirmButton : SignUpButton;
 };
 
 export default SignUpForm;

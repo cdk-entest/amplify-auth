@@ -13,6 +13,7 @@ const SignOutForm = ({ setUser }: { setUser: any }) => {
       display="flex"
       alignItems="center"
       justifyContent="center"
+      margin={"auto"}
     >
       <VStack
         py={12}

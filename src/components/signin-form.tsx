@@ -67,6 +67,7 @@ const LoginForm = ({ setUser }: { setUser: any }) => {
       display="flex"
       alignItems="center"
       justifyContent="center"
+      margin={"auto"}
     >
       <VStack
         py={12}
@@ -110,7 +111,7 @@ const LoginForm = ({ setUser }: { setUser: any }) => {
           width="100%"
           colorScheme="orange"
           onClick={async () => {
-            setUser('SIGNUP')
+            setUser("SIGNUP");
           }}
         >
           Create An Account
